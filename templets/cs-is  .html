@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script> 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>CS-IS</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{% static 'css/simple-sidebar.css' %}">
+
+</head>
+
+<body>
+  <div ng-app>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <a href="/ "><button>HOME</button></a>
+      <div class="sidebar-heading">select from below</div>
+      <div class="list-group list-group-flush">
+      {% for note in notes.all %}
+      {% ifequal note.branch_sem_id "11" %}
+      <a class="list-group-item list-group-item-action bg-light"></a> <button ng-click="page='{{ note.subject_name }}'">{{ note.subject_name }}</button>
+      {% endifequal%}
+     {%endfor%} 
+    </div> 
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button class="btn btn-primary" id="menu-toggle">select your subject here</button>
+            <div ng-init="page='dbms'"></div>
+    <div ng-show="page === 'dbms'">
+        <div class="container"> 
+          <h2>{{ note.subject_name }}</h2>
+                {% for note in notes.all %}
+                {% ifequal note.subject_name "dbms" %}         
+       <div class="row">
+              <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                  <div class="card-body"><h3 class="card-title">MODULE {{note.module_no}}</h3>
+                    <h5>>{{note.module_name}}</h5>
+                  </div>
+                  <div><h6>uploaded by:   {{ note.added_by }}</h6></div>
+                  <div class="card-footer"><a href="/media/{{note.upload_file}}" class="btn btn-primary btn-sm">download notes</a></div>
+                </div>
+              </div>                  
+            </div>
+             {% endifequal %}
+            {% endfor %}       
+      </div>
+ </div>   
+   </div> 
+ </div>
+ </div>
+</div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Menu Toggle Script -->
+  <div id="footer">
+      <span style="display:block;font-size:0.9em;line-height:55px;color:rgb(255, 255, 255)"><span style="display:inline-block;">&copy; <span style="font-family:'Titillium Web';font-weight:900;letter-spacing:0.06em">AMITH N C</span> DBMS Project</span></span>
+      <span style="display:block;font-size:0.7em;line-height:30px;margin-top:-25px;color:rgb(255, 255, 255)">&lang; !--AR-VR-- &rang;<span>
+    </div>
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+</body>
+</html>

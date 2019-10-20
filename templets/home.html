@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load staticfiles %}
+  <meta charset="utf-8">
+  <title>MIT NOTES| dbms project|</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- Favicons -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script> 
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+ 
+  <!-- Libraries CSS Files -->
+  <link rel="stylesheet" href="{% static 'css1/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css1/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css1/ionicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css1/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css1/lightbox.min.css' %}">
+  <!-- Main Stylesheet File -->
+  <link rel="stylesheet" href="{% static 'css1/style.css' %}">
+</head>
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+      <div class="logo float-left">
+        <a href="#header" class="scrollto"><img src="/media/images/mite-large-1.png" width="400" height="600"></a>
+      </div>
+
+      <nav class="main-nav float-right ">
+        <ul>
+          <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="#branch">select your branch</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-6 intro-info order-md-first order-last">
+          <h2>welcome <br>to<span>MIT NOTES</span></h2>
+          <div>
+            <a href="/calender" class="btn-get-started scrollto"> MIT calender</a>
+            <a href="#branch" class="btn-get-started scrollto">Get notes!!</a>
+          </div>
+        </div>
+  
+        <div class="col-md-6 intro-img order-md-last order-first">
+           <img src="/media/images/MIT DIGI NOTES.png" alt="" class="img-fluid">
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+    <!--==========================
+      branch Section
+    ============================-->
+    <section id="branch" class="section-bg">
+ <div ng-app>      
+      <div class="container">
+        <header class="section-header">
+          <h3 class="section-title">select your branch</h3>
+        </header>
+                  <div ng-init="page='first'"></div>
+        <p>
+          <div class="col-lg-12">
+            <ul id="branch-flters">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <button ng-click="page='first'">CS/IS</button>
+                    </label>
+                    <label class="btn btn-secondary">
+                        <button ng-click="page='second'">EC</button>
+                    </label>
+                    <label class="btn btn-secondary">
+                        <button ng-click="page='third'">CIVIL</button>
+                    </label>
+                    <label class="btn btn-secondary ">
+                        <button ng-click="page='forth'">mech</button>
+                    </label>
+                    <label class="btn btn-secondary">
+                        <button ng-click="page='fifth'">1styear</button>
+                    </label>
+                  </div>
+            </ul>
+          </div>
+        </p>   
+      <div ng-show="page === 'first'">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                  <figure>
+                          <img src="/media/images/csis/sem3.png" class="img-fluid" alt="img01">
+                          <figcaption>
+                              <h3>SEM3</h3>
+                              <a href="/notes_cs-is/">GET NOTES!</a>
+                          </figcaption>
+                      </figure>
+              </div>
+              <br>
+              <div class="col-sm-4">
+                  <figure>
+                          <img src="/media/images/csis/sem4png.png" class="img-fluid" alt="img02">
+                          <figcaption>
+                              <h3>sem4</h3>
+                              <a href="#">GET NOTES!</a>
+                          </figcaption>
+                      </figure>
+              </div>
+              <div class="col-sm-4">
+                  <figure>
+                          <img src="/media/images/csis/sem5.png" class="img-fluid" alt="img03">
+                          <figcaption>
+                              <h3>SEM5</h3>
+                              <a href="#">GET NOTES!</a>
+                          </figcaption>
+                      </figure>
+              </div>
+          </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                  <figure>
+                          <img src="/media/images/csis/sem6.png" class="img-fluid" alt="img04">
+                          <figcaption>
+                              <h3>SEM6</h3>
+                              <a href="#">GET NOTES!</a>
+                          </figcaption>
+                      </figure>
+              </div>
+            </div>
+        </div>
+    </div>
+      <div ng-show="page === 'second'">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-4">
+                        <figure>
+                                <img src="/media/images/EC/sem3.png" class="img-fluid" alt="img01">
+                                <figcaption>
+                                    <h3>SEM3</h3>
+                                    <a href="/notes_cs-is/">GET NOTES!</a>
+                                </figcaption>
+                            </figure>
+                    </div>
+                    <br>
+                    <div class="col-sm-4">
+                        <figure>
+                                <img src="/media/images/EC/sem4.png" class="img-fluid" alt="img02">
+                                <figcaption>
+                                    <h3>sem4</h3>
+                                    <a href="#">GET NOTES!</a>
+                                </figcaption>
+                            </figure>
+                    </div>
+                    <div class="col-sm-4">
+                        <figure>
+                                <img src="/media/images/EC/sem5.png" class="img-fluid" alt="img03">
+                                <figcaption>
+                                    <h3>SEM5</h3>
+                                    <a href="#">GET NOTES!</a>
+                                </figcaption>
+                            </figure>
+                    </div>
+                  </div>
+                </div> 
+                <br>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-4">
+                        <figure>
+                                <img src="/media/images/EC/sem6.png" class="img-fluid" alt="img04">
+                                <figcaption>
+                                    <h3>SEM6</h3>
+                                    <a href="#">GET NOTES!</a>
+                                </figcaption>
+                            </figure>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <div ng-show="page === 'third'">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-4">
+                      <figure>
+                              <img src="/media/images/civil/sem3.png" class="img-fluid" alt="img01">
+                              <figcaption>
+                                  <h3>SEM3</h3>
+                                  <a href="/notes_cs-is/">GET NOTES!</a>
+                              </figcaption>
+                          </figure>
+                  </div>
+                  <br>
+                  <div class="col-sm-4">
+                      <figure>
+                              <img src="/media/images/civil/sem4.png" class="img-fluid" alt="img02">
+                              <figcaption>
+                                  <h3>sem4</h3>
+                                  <a href="#">GET NOTES!</a>
+                              </figcaption>
+                          </figure>
+                  </div>
+                  <div class="col-sm-4">
+                      <figure>
+                              <img src="/media/images/civil/sem5.png" class="img-fluid" alt="img03">
+                              <figcaption>
+                                  <h3>SEM5</h3>
+                                  <a href="#">GET NOTES!</a>
+                              </figcaption>
+                          </figure>
+                  </div>
+                </div>
+              </div> 
+              <br>
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-4">
+                      <figure>
+                              <img src="/media/images/civil/sem6.png" class="img-fluid" alt="img04">
+                              <figcaption>
+                                  <h3>SEM6</h3>
+                                  <a href="#">GET NOTES!</a>
+                              </figcaption>
+                          </figure>
+                  </div>
+                </div>
+          </div>
+        </div>
+        <div ng-show="page === 'forth'">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-4">
+                    <figure>
+                            <img src="/media/images/sem3.png" class="img-fluid" alt="img01">
+                            <figcaption>
+                                <h3>SEM3</h3>
+                                <a href="/notes_cs-is/">GET NOTES!</a>
+                            </figcaption>
+                        </figure>
+                </div>
+                <br>
+                <div class="col-sm-4">
+                    <figure>
+                            <img src="/media/images/sem4.png" class="img-fluid" alt="img02">
+                            <figcaption>
+                                <h3>sem4</h3>
+                                <a href="#">GET NOTES!</a>
+                            </figcaption>
+                        </figure>
+                </div>
+                <div class="col-sm-4">
+                    <figure>
+                            <img src="/media/images/sem5.png" class="img-fluid" alt="img03">
+                            <figcaption>
+                                <h3>SEM5</h3>
+                                <a href="#">GET NOTES!</a>
+                            </figcaption>
+                        </figure>
+                </div>
+              </div>
+            </div> 
+            <br>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-4">
+                    <figure>
+                            <img src="/media/images/sem6.png" class="img-fluid" alt="img04">
+                            <figcaption>
+                                <h3>SEM6</h3>
+                                <a href="#">GET NOTES!</a>
+                            </figcaption>
+                        </figure>
+                </div>
+              </div>
+        </div>
+      </div>
+       </div>
+</div>
+    </section><!-- #branch -->
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer" class="section-bg">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>nca</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="#branch">MIT ERP TEAM</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><img src="/media/images/arrow-up-on-a-black-circle-background.png" class="img-fluid" alt="img04"></a>
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'js2/jquery.min.js' %}"></script>
+  <script src="{% static 'js2/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js2/easing.min.js' %}"></script>
+  <script src="{% static 'js2/mobile-nav.js' %}"></script>
+  <script src="{% static 'js2/wow.min.js' %}"></script>
+  <script src="{% static 'js2/waypoints.min.js' %}"></script>
+  <script src="{% static 'js2/counterup.min.js' %}"></script>
+  <script src="{% static 'js2/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js2/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'js2/lightbox.min.js' %}"></script>
+  <!-- Template Main Javascript File -->
+  <script src="{% static  'js2/main.js' %}"></script>
+</body>
+</html>
+
