@@ -14,33 +14,35 @@
   <link rel="stylesheet" href="{% static 'css/simple-sidebar.css' %}">
 
 </head>
-
 <body>
   <div ng-app>
   <div class="d-flex" id="wrapper">
+
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
         <a href="/ "><button>HOME</button></a>
       <div class="sidebar-heading">select from below</div>
       <div class="list-group list-group-flush">
-      {% for note in notes.all %}
-      {% ifequal note.branch_sem_id "11" %}
-      <a class="list-group-item list-group-item-action bg-light"></a> <button ng-click="page='{{ note.subject_name }}'">{{ note.subject_name }}</button>
-      {% endifequal%}
-     {%endfor%} 
-    </div> 
+      
+        <a class="list-group-item list-group-item-action bg-light"><button ng-click="page='temp'">DBMS</button></a>
+        <a class="list-group-item list-group-item-action bg-light"><button ng-click="page='temp'"></button></a>
+      </div>
     </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <button class="btn btn-primary" id="menu-toggle">select your subject here</button>
-            <div ng-init="page='dbms'"></div>
-    <div ng-show="page === 'dbms'">
+      <h2>{{ subject1 }}</h2>
+      <h2>{{ subject2 }}</h2>
+      <h2>{{ subject3 }}</h2>
+        <h2>{{ notes.all }}</h2>
+            <div ng-init="page='first'"></div>
+    <div ng-show="page === 'first'">
         <div class="container"> 
-          <h2>{{ note.subject_name }}</h2>
+          <h2>cloud computing</h2>
                 {% for note in notes.all %}
-                {% ifequal note.subject_name "dbms" %}         
+                {% ifequal %}         
        <div class="row">
               <div class="col-md-4 mb-5">
                 <div class="card h-100">
@@ -56,9 +58,30 @@
             {% endfor %}       
       </div>
  </div>   
-   </div> 
- </div>
- </div>
+ <div class="container">
+          <div ng-show="page === 'temp'">
+            <h2>DBMS</h2>
+                      {% for note in notes.all %}
+                          {% ifequal note.subject_name "dbms" %}
+                      <div class="row">
+                        <div class="col-md-4 mb-5">
+                          <div class="card h-100">
+                            <div class="card-body"><h3 class="card-title">MODULE {{note.module_no}}</h3>
+                              <h5>>{{note.module_name}}</h5>
+                            </div>
+                            <div><h6>uploaded by:   {{ note.added_by }}</h6></div>
+                            <div class="card-footer"><a href="/media/{{note.upload_file}}" class="btn btn-primary btn-sm">download notes</a></div>
+                          </div>
+                        </div>                  
+                      </div>
+                  {% endifequal %}
+               {% endfor %}  
+          </div>     
+                      <!-- /.row -->
+            </div> 
+            </div>
+         </div>
+     </div>
 </div>
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'js/jquery.min.js' %}"></script>

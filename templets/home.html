@@ -104,25 +104,30 @@
       <div ng-show="page === 'first'">
           <div class="container">
             <div class="row">
+              <form action="/notes_cs-is/" method="POST" id="systemform">
+                {% csrf_token %}
               <div class="col-sm-4">
                   <figure>
                           <img src="/media/images/csis/sem3.png" class="img-fluid" alt="img01">
                           <figcaption>
                               <h3>SEM3</h3>
-                              <a href="/notes_cs-is/">GET NOTES!</a>
+                              <button type="submit" name="system" value="11" form="systemform" class="btn btn-primary">getnotes!</button>
                           </figcaption>
                       </figure>
               </div>
+              </form>
               <br>
+              <form action="/notes_cs-is/" method="POST" id="systemform">
               <div class="col-sm-4">
                   <figure>
                           <img src="/media/images/csis/sem4png.png" class="img-fluid" alt="img02">
                           <figcaption>
                               <h3>sem4</h3>
-                              <a href="#">GET NOTES!</a>
+                              <button type="submit" name="system" value="12" form="systemform" class="btn btn-primary">getnotes!!</button>
                           </figcaption>
                       </figure>
               </div>
+            </form>
               <div class="col-sm-4">
                   <figure>
                           <img src="/media/images/csis/sem5.png" class="img-fluid" alt="img03">

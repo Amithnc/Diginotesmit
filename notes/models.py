@@ -9,7 +9,8 @@ class Note(models.Model):
     subject_name=models.CharField(help_text="ENTER THE SUBJECT NAME",max_length=10,default='')
     added_by =models.CharField(help_text="ENTER YOUR NAME",max_length=10,default='')   
     module_name=models.CharField(help_text="ENTER MODULE NAME",max_length=40,default='')
+    branch_sem_id=models.CharField(help_text="enter",max_length=2,default='')
 
     def __str__(self):
-         return self.subject_name+" Module  "+self.module_no +"    ADDED BY: "+self.added_by
+         return self.subject_name+" Module  "+self.module_no +"    ADDED BY: "+self.added_by+self.branch_sem_id
 
