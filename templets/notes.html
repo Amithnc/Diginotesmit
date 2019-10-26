@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>CS-IS</title>
+  <title>NOTES|DBMS PROJECT|NCA</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -32,7 +32,7 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <button class="btn btn-primary" id="menu-toggle">select your subject here</button>
+        <button class="btn btn-primary" id="menu-toggle">clik here to select subject</button>
         {% for sub in subject %}
         <div ng-show="page === '{{sub}}'">
         {% for note in notes.all %}
@@ -63,7 +63,7 @@
   <!-- Menu Toggle Script -->
   <div id="footer">
       <span style="display:block;font-size:0.9em;line-height:55px;color:rgb(255, 255, 255)"><span style="display:inline-block;">&copy; <span style="font-family:'Titillium Web';font-weight:900;letter-spacing:0.06em">AMITH N C</span> DBMS Project</span></span>
-      <span style="display:block;font-size:0.7em;line-height:30px;margin-top:-25px;color:rgb(255, 255, 255)">&lang; !--AR-VR-- &rang;<span>
+      <span style="display:block;font-size:0.7em;line-height:30px;margin-top:-25px;color:rgb(255, 255, 255)">&lang;{% now "jS F Y H:i" %} &rang;<span>
     </div>
   <script>
     $("#menu-toggle").click(function(e) {

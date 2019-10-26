@@ -1,3 +1,5 @@
 media
 
 demo/__pycache__/
+notes/__pycache__
+notes/migrations
