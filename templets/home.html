@@ -6,7 +6,7 @@
   <title>MIT NOTES| dbms project|</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <!-- Favicons -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <link href="img/favicon.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -15,7 +15,7 @@
 
   <!-- Bootstrap CSS File -->
   <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
- 
+
   <!-- Libraries CSS Files -->
   <link rel="stylesheet" href="{% static 'css1/font-awesome.min.css' %}">
   <link rel="stylesheet" href="{% static 'css1/animate.min.css' %}">
@@ -34,14 +34,6 @@
       <div class="logo float-left">
         <a href="#header" class="scrollto"><img src="/media/images/mite-large-1.png" width="400" height="600"></a>
       </div>
-
-      <nav class="main-nav float-right ">
-        <ul>
-          <li class="active"><a href="#intro">Home</a></li>
-          <li><a href="#branch">select your branch</a></li>
-        </ul>
-      </nav><!-- .main-nav -->
-      
     </div>
   </header><!-- #header -->
 
@@ -54,11 +46,10 @@
         <div class="col-md-6 intro-info order-md-first order-last">
           <h2>welcome <br>TO<span>   MIT NOTES</span></h2>
           <div>
-            <a href="/calender" class="btn-get-started scrollto"> MIT calender</a>
             <a href="#branch" class="btn-get-started scrollto">Get notes!!</a>
           </div>
         </div>
-  
+
         <div class="col-md-6 intro-img order-md-last order-first">
            <img src="/media/images/MIT DIGI NOTES.png" alt="" class="img-fluid">
         </div>
@@ -72,7 +63,7 @@
       branch Section
     ============================-->
     <section id="branch" class="section-bg">
- <div ng-app>      
+ <div ng-app>
       <div class="container">
         <header class="section-header">
           <h3 class="section-title">select your branch</h3>
@@ -99,8 +90,8 @@
                   </div>
             </ul>
           </div>
-        <form action="/notes/" method="POST" id="systemform">
-        {% csrf_token %}   
+        <form action="/notes/" method="POST" id="notesform">
+        {% csrf_token %}
         <div ng-show="page === 'first'">
           <div class="container">
             <div class="row">
@@ -109,7 +100,7 @@
                           <img src="/media/images/csis/sem3.png" class="img-fluid" alt="img01">
                           <figcaption>
                               <h3>SEM3</h3>
-                              <button type="submit" name="system" value="13" form="systemform" class="btn btn-primary">getnotes!</button>
+                              <button type="submit" name="notes" value="cs/IS-sem3" form="notesform" class="btn btn-primary">getnotes!</button>
                           </figcaption>
                       </figure>
               </div>
@@ -120,7 +111,7 @@
                           <img src="/media/images/csis/sem4png.png" class="img-fluid" alt="img02">
                           <figcaption>
                               <h3>sem4</h3>
-                              <button type="submit" name="system" value="14" form="systemform" class="btn btn-primary">getnotes!</button>
+                              <button type="submit" name="notes" value="cs/IS-sem4" form="notesform" class="btn btn-primary">getnotes!</button>
                           </figcaption>
                       </figure>
               </div>
@@ -129,12 +120,12 @@
                           <img src="/media/images/csis/sem5.png" class="img-fluid" alt="img03">
                           <figcaption>
                               <h3>SEM5</h3>
-                              <button type="submit" name="system" value="15" form="systemform" class="btn btn-primary">getnotes!</button>
+                              <button type="submit" name="notes" value="cs/IS-sem5" form="notesform" class="btn btn-primary">getnotes!</button>
                           </figcaption>
                       </figure>
               </div>
             </div>
-          </div> 
+          </div>
           <br>
           <div class="container">
             <div class="row">
@@ -143,7 +134,7 @@
                           <img src="/media/images/csis/sem6.png" class="img-fluid" alt="img04">
                           <figcaption>
                               <h3>SEM6</h3>
-                              <button type="submit" name="system" value="16" form="systemform" class="btn btn-primary">getnotes!</button>
+                              <button type="submit" name="notes" value="cs/IS-sem6" form="notesform" class="btn btn-primary">getnotes!</button>
                           </figcaption>
                       </figure>
               </div>
@@ -158,7 +149,7 @@
                                 <img src="/media/images/EC/sem3.png" class="img-fluid" alt="img01">
                                 <figcaption>
                                     <h3>SEM3</h3>
-                                    <button type="submit" name="system" value="23" form="systemform" class="btn btn-primary">getnotes!</button>
+                                    <button type="submit" name="notes" value="ec-sem3" form="notesform" class="btn btn-primary">getnotes!</button>
                                 </figcaption>
                             </figure>
                     </div>
@@ -168,7 +159,7 @@
                                 <img src="/media/images/EC/sem4.png" class="img-fluid" alt="img02">
                                 <figcaption>
                                     <h3>sem4</h3>
-                                    <button type="submit" name="system" value="24" form="systemform" class="btn btn-primary">getnotes!</button>
+                                    <button type="submit" name="notes" value="ec-sem4" form="notesform" class="btn btn-primary">getnotes!</button>
                                 </figcaption>
                             </figure>
                     </div>
@@ -177,12 +168,12 @@
                                 <img src="/media/images/EC/sem5.png" class="img-fluid" alt="img03">
                                 <figcaption>
                                     <h3>SEM5</h3>
-                                    <button type="submit" name="system" value="25" form="systemform" class="btn btn-primary">getnotes!</button>
+                                    <button type="submit" name="notes" value="ec-sem5" form="notesform" class="btn btn-primary">getnotes!</button>
                                 </figcaption>
                             </figure>
                     </div>
                   </div>
-                </div> 
+                </div>
                 <br>
                 <div class="container">
                   <div class="row">
@@ -191,7 +182,7 @@
                                 <img src="/media/images/EC/sem6.png" class="img-fluid" alt="img04">
                                 <figcaption>
                                     <h3>SEM6</h3>
-                                    <button type="submit" name="system" value="26" form="systemform" class="btn btn-primary">getnotes!</button>
+                                    <button type="submit" name="notes" value="ec-sem6" form="notesform" class="btn btn-primary">getnotes!</button>
                                 </figcaption>
                             </figure>
                     </div>
@@ -206,7 +197,7 @@
                               <img src="/media/images/civil/sem3.png" class="img-fluid" alt="img01">
                               <figcaption>
                                   <h3>SEM3</h3>
-                                  <button type="submit" name="system" value="33" form="systemform" class="btn btn-primary">getnotes!</button>
+                                  <button type="submit" name="notes" value="civil-sem3" form="notesform" class="btn btn-primary">getnotes!</button>
                               </figcaption>
                           </figure>
                   </div>
@@ -216,7 +207,7 @@
                               <img src="/media/images/civil/sem4.png" class="img-fluid" alt="img02">
                               <figcaption>
                                   <h3>sem4</h3>
-                                  <button type="submit" name="system" value="34" form="systemform" class="btn btn-primary">getnotes!</button>
+                                  <button type="submit" name="notes" value="civil-sem4" form="notesform" class="btn btn-primary">getnotes!</button>
                               </figcaption>
                           </figure>
                   </div>
@@ -225,12 +216,12 @@
                               <img src="/media/images/civil/sem5.png" class="img-fluid" alt="img03">
                               <figcaption>
                                   <h3>SEM5</h3>
-                                  <button type="submit" name="system" value="35" form="systemform" class="btn btn-primary">getnotes!</button>
+                                  <button type="submit" name="notes" value="civil-sem5" form="notesform" class="btn btn-primary">getnotes!</button>
                               </figcaption>
                           </figure>
                   </div>
                 </div>
-              </div> 
+              </div>
               <br>
               <div class="container">
                 <div class="row">
@@ -239,7 +230,7 @@
                               <img src="/media/images/civil/sem6.png" class="img-fluid" alt="img04">
                               <figcaption>
                                   <h3>SEM6</h3>
-                                  <button type="submit" name="system" value="36" form="systemform" class="btn btn-primary">getnotes!</button>
+                                  <button type="submit" name="notes" value="civil-sem6" form="notesform" class="btn btn-primary">getnotes!</button>
                               </figcaption>
                           </figure>
                   </div>
@@ -254,7 +245,7 @@
                             <img src="/media/images/sem3.png" class="img-fluid" alt="img01">
                             <figcaption>
                                 <h3>SEM3</h3>
-                                <button type="submit" name="system" value="43" form="systemform" class="btn btn-primary">getnotes!</button>
+                                <button type="submit" name="notes" value="mech-sem3" form="notesform" class="btn btn-primary">getnotes!</button>
                             </figcaption>
                         </figure>
                 </div>
@@ -264,7 +255,7 @@
                             <img src="/media/images/sem4.png" class="img-fluid" alt="img02">
                             <figcaption>
                                 <h3>sem4</h3>
-                                <button type="submit" name="system" value="44" form="systemform" class="btn btn-primary">getnotes!</button>
+                                <button type="submit" name="notes" value="mech-sem4" form="notesform" class="btn btn-primary">getnotes!</button>
                             </figcaption>
                         </figure>
                 </div>
@@ -273,12 +264,12 @@
                             <img src="/media/images/sem5.png" class="img-fluid" alt="img03">
                             <figcaption>
                                 <h3>SEM5</h3>
-                                <button type="submit" name="system" value="45" form="systemform" class="btn btn-primary">getnotes!</button>
+                                <button type="submit" name="notes" value="mech-sem5" form="notesform" class="btn btn-primary">getnotes!</button>
                             </figcaption>
                         </figure>
                 </div>
               </div>
-            </div> 
+            </div>
             <br>
             <div class="container">
               <div class="row">
@@ -287,13 +278,16 @@
                             <img src="/media/images/sem6.png" class="img-fluid" alt="img04">
                             <figcaption>
                                 <h3>SEM6</h3>
-                                <button type="submit" name="system" value="46" form="systemform" class="btn btn-primary">getnotes!</button>
+                                <button type="submit" name="notes" value="mech-sem6" form="notesform" class="btn btn-primary">getnotes!</button>
                             </figcaption>
                         </figure>
                 </div>
               </div>
         </div>
       </div>
+       <div ng-show="page === 'fifth'">
+           <h1>UNDER DEVELOPMENT</h1>
+        </div>
        </div>
 </div>
     </section><!-- #branch -->

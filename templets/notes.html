@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="en">
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script> 
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>NOTES|DBMS PROJECT|NCA</title>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
 
   <!-- Custom styles for this template -->
-  <link rel="stylesheet" href="{% static 'css/simple-sidebar.css' %}">
+  <link rel="stylesheet" href="{% static 'css1/simple-sidebar.css' %}">
 
 </head>
 
@@ -24,9 +24,9 @@
       <div class="sidebar-heading">select from below</div>
       <div class="list-group list-group-flush">
       {% for sub in subject %}
-      <a class="list-group-item list-group-item-action bg-light"></a> <button ng-click="page='{{ sub }}'">{{ sub }}</button>
-      {%endfor%} 
-    </div> 
+      <a class="list-group-item list-group-item-action "></a> <button ng-click="page='{{ sub }}'">{{ sub }}</button>
+      {%endfor%}
+    </div>
     </div>
     <!-- /#sidebar-wrapper -->
 
@@ -36,8 +36,8 @@
         {% for sub in subject %}
         <div ng-show="page === '{{sub}}'">
         {% for note in notes.all %}
-        {% ifequal sub note.subject_name %} 
-        <div class="container">       
+        {% ifequal sub note.subject_name %}
+        <div class="container">
          <div class="row">
                 <div class="col-md-4 mb-5">
                   <div class="card h-100">
@@ -47,19 +47,19 @@
                     <div><h6>uploaded by:   {{ note.added_by }}</h6></div>
                     <div class="card-footer"><a href="/media/{{note.upload_file}}" class="btn btn-primary btn-sm">download notes</a></div>
                   </div>
-                </div>                  
-              </div>    
+                </div>
+              </div>
         </div>
         {%endifequal%}
         {%endfor%}
         </div>
-        {%endfor%} 
-   </div>   
+        {%endfor%}
+   </div>
  </div>
  </div>
   <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'js/jquery.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js2/jquery.min.js' %}"></script>
+  <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>
   <!-- Menu Toggle Script -->
   <div id="footer">
       <span style="display:block;font-size:0.9em;line-height:55px;color:rgb(255, 255, 255)"><span style="display:inline-block;">&copy; <span style="font-family:'Titillium Web';font-weight:900;letter-spacing:0.06em">AMITH N C</span> DBMS Project</span></span>
