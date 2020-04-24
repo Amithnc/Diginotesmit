@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>NOTES|DBMS PROJECT|NCA</title>
 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Atma:700|Sofadi+One&display=swap" rel="stylesheet">
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
 
@@ -20,11 +22,13 @@
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-        <a href="/ "><button>HOME</button></a>
+
+        <a href="/" data-toggle="tooltip" title="go back!"><button type="button" class="btn btn-outline-success">Home</button></a>
+        <a href="/ "></a>
       <div class="sidebar-heading">select from below</div>
       <div class="list-group list-group-flush">
       {% for sub in subject %}
-      <a class="list-group-item list-group-item-action "></a> <button ng-click="page='{{ sub }}'">{{ sub }}</button>
+      <a class="list-group-item list-group-item-action "></a> <button class="btn btn-outline-info" ng-click="page='{{ sub }}'">{{ sub }}</button>
       {%endfor%}
     </div>
     </div>
@@ -32,7 +36,7 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <button class="btn btn-primary" id="menu-toggle">clik here to select subject</button>
+        <button class="btn btn-primary" id="menu-toggle"><h6>click here to select subject</h6></button>
         {% for sub in subject %}
         <div ng-show="page === '{{sub}}'">
         {% for note in notes.all %}
@@ -42,10 +46,10 @@
                 <div class="col-md-4 mb-5">
                   <div class="card h-100">
                     <div class="card-body"><h3 class="card-title">MODULE {{note.module_no}}</h3>
-                      <h5>>{{note.module_name}}</h5>
+                      <h5>->{{note.module_name}}</h5>
+                      <h6>Uploaded by:  {{ note.added_by }}</h6>
                     </div>
-                    <div><h6>uploaded by:   {{ note.added_by }}</h6></div>
-                    <div class="card-footer"><a href="/media/{{note.upload_file}}" class="btn btn-primary btn-sm">download notes</a></div>
+                    <div class="card-footer"><a href="/media/{{note.upload_file}}" class="btn btn-outline-warning"><span class="spinner-grow spinner-grow-sm"></span>Download Notes</a></div>
                   </div>
                 </div>
               </div>
@@ -61,10 +65,6 @@
   <script src="{% static 'js2/jquery.min.js' %}"></script>
   <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>
   <!-- Menu Toggle Script -->
-  <div id="footer">
-      <span style="display:block;font-size:0.9em;line-height:55px;color:rgb(255, 255, 255)"><span style="display:inline-block;">&copy; <span style="font-family:'Titillium Web';font-weight:900;letter-spacing:0.06em">AMITH N C</span> DBMS Project</span></span>
-      <span style="display:block;font-size:0.7em;line-height:30px;margin-top:-25px;color:rgb(255, 255, 255)">&lang;{% now "jS F Y H:i" %} &rang;<span>
-    </div>
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
@@ -73,3 +73,8 @@
   </script>
 </body>
 </html>
+
+
+
+
+
