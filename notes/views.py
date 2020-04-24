@@ -5,7 +5,7 @@ def homepage(request):
 def notes(request):
     context ={ }
     system=request.POST.get('notes',None)
-    notes=Note.objects.filter(branch_and_sem=system)
+    notes=Note.objects.filter(SBSKEY=system)
     i=1
     for note in notes:
         if note.subject_name not in context.values():
