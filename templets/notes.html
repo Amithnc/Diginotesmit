@@ -1,80 +1,57 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+<!DOCTYPE html> {% load staticfiles %}
 <html lang="en">
+
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>NOTES|DBMS PROJECT|NCA</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Atma:700|Sofadi+One&display=swap" rel="stylesheet">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
-
-  <!-- Custom styles for this template -->
-  <link rel="stylesheet" href="{% static 'css1/simple-sidebar.css' %}">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>『NOTES』</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Atma:700|Sofadi+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/simple-sidebar.css' %}">
 </head>
 
 <body>
-  <div ng-app>
-  <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-
-        <a href="/" data-toggle="tooltip" title="go back!"><button type="button" class="btn btn-outline-success">Home</button></a>
-        <a href="/ "></a>
-      <div class="sidebar-heading">select from below</div>
-      <div class="list-group list-group-flush">
-      {% for sub in subject %}
-      <a class="list-group-item list-group-item-action "></a> <button class="btn btn-outline-info" ng-click="page='{{ sub }}'">{{ sub }}</button>
-      {%endfor%}
-    </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <button class="btn btn-primary" id="menu-toggle"><h6>click here to select subject</h6></button>
-        {% for sub in subject %}
-        <div ng-show="page === '{{sub}}'">
-        {% for note in notes.all %}
-        {% ifequal sub note.subject_name %}
-        <div class="container">
-         <div class="row">
-                <div class="col-md-4 mb-5">
-                  <div class="card h-100">
-                    <div class="card-body"><h3 class="card-title">MODULE {{note.module_no}}</h3>
-                      <h5>->{{note.module_name}}</h5>
-                      <h6>Uploaded by:  {{ note.added_by }}</h6>
-                    </div>
-                    <div class="card-footer"><a href="/media/{{note.upload_file}}" class="btn btn-outline-warning"><span class="spinner-grow spinner-grow-sm"></span>Download Notes</a></div>
-                  </div>
-                </div>
-              </div>
+    <div ng-app>
+        <div class="d-flex" id="wrapper">
+            <div class="bg-light border-right" id="sidebar-wrapper">
+                <a href="/" data-toggle="tooltip" title="go back!">
+                    <button type="button" class="btn btn-outline-success">Home</button>
+                </a>
+                <a href="/ "></a>
+                <div class="sidebar-heading">select from below</div>
+                <div class="list-group list-group-flush"> {% for sub in subject %}
+                    <a class="list-group-item list-group-item-action "></a>
+                    <button class="btn btn-outline-info" ng-click="page='{{ sub }}'">{{ sub }}</button> {%endfor%}</div>
+            </div>
+            <div id="page-content-wrapper">
+                <button class="btn btn-primary" id="menu-toggle">
+                    <h6>click here to select subject</h6></button> {% for sub in subject %}
+                <div ng-show="page === '{{sub}}'"> {% for note in notes.all %} {% ifequal sub note.subject_name %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 mb-5">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h3 class="card-title">MODULE {{note.module_no}}</h3>
+                                        <h5>->{{note.module_name}}</h5>
+                                        <h6>Uploaded by: {{ note.added_by }}</h6></div>
+                                    <div class="card-footer"><a href="/media/{{note.upload_file}}" class="btn btn-outline-warning"><span class="spinner-grow spinner-grow-sm"></span>Download Notes</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> {%endifequal%} {%endfor%}</div> {%endfor%}</div>
         </div>
-        {%endifequal%}
-        {%endfor%}
-        </div>
-        {%endfor%}
-   </div>
- </div>
- </div>
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'js2/jquery.min.js' %}"></script>
-  <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
+    </div>
+    <script src="{% static 'js2/jquery.min.js' %}"></script>
+    <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
+
 </html>
-
-
-
-
-
