@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css1/simple-sidebar.css' %}">
 </head>
-
 <body>
     <div ng-app>
         <div class="d-flex" id="wrapper">
@@ -21,14 +20,15 @@
                 </a>
                 <a href="/ "></a>
                 <div class="sidebar-heading">select from below</div>
-                <div class="list-group list-group-flush"> {% for sub in subject %}
+                <div class="list-group list-group-flush"> {% for sub,subc in mainlist %}
                     <a class="list-group-item list-group-item-action "></a>
-                    <button class="btn btn-outline-info" ng-click="page='{{ sub }}'">{{ sub }}</button> {%endfor%}</div>
+                    <button class="btn btn-outline-info" ng-click="page='{{ subc }}'">{{ sub }}</button> {%endfor%}</div>
             </div>
             <div id="page-content-wrapper">
                 <button class="btn btn-primary" id="menu-toggle">
-                    <h6>click here to select subject</h6></button> {% for sub in subject %}
-                <div ng-show="page === '{{sub}}'"> {% for note in notes.all %} {% ifequal sub note.subject_name %}
+                    <h6>click here to select subject</h6></button> {% for subc in code %}
+                <div ng-show="page === '{{subc}}'"> {% for note in notes.all %}
+                    {% ifequal subc note.subject_code %}
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 mb-5">
