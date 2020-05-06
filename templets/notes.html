@@ -27,21 +27,29 @@
             <div id="page-content-wrapper">
                 <button class="btn btn-primary" id="menu-toggle">
                     <h6>click here to select subject</h6></button> {% for subc in code %}
-                <div ng-show="page === '{{subc}}'"> {% for note in notes.all %}
-                    {% ifequal subc note.subject_code %}
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4 mb-5">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <h3 class="card-title">MODULE {{note.module_no}}</h3>
-                                        <h5>->{{note.module_name}}</h5>
-                                        <h6>Uploaded by: {{ note.added_by }}</h6></div>
-                                    <div class="card-footer"><a href="/media/{{note.upload_file}}" class="btn btn-outline-warning"><span class="spinner-grow spinner-grow-sm"></span>Download Notes</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> {%endifequal%} {%endfor%}</div> {%endfor%}</div>
+                <div ng-show="page === '{{subc}}'">
+                <table class="table table-bordered table-sm table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col"><h6>module number</h6></th>
+                            <th scope="col"><h6>module name</h6></th>
+                            <th scope="col"><h6>uploaded by</h6></th>
+                            <th scope="col"><h6>notes</h6></th>
+                          </tr>
+                        </thead>
+                        {% for note in notes.all %}
+                        {% ifequal subc note.subject_code %}
+                        <tbody>
+                          <tr>
+                            <th scope="row"><h5>{{ note.module_no }}</h5></th>
+                            <td>{{ note.module_name }}</td>
+                            <td>{{ note.added_by }}</td>
+                            <td><a href="/media/{{note.upload_file}}" class="badge badge-primary">download</a></td>
+                          </tr>
+                        </tbody>
+                        {%endifequal%} {%endfor%}
+                      </table>
+                    </div> {%endfor%}</div>
         </div>
     </div>
     <script src="{% static 'js2/jquery.min.js' %}"></script>
