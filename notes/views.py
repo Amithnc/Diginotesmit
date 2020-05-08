@@ -6,7 +6,7 @@ def notes(request):
     context ={ }
     codecontext ={ }
     system=request.POST.get('notes',None)
-    notes=Note.objects.filter(SBSKEY=system)
+    notes=Note.objects.filter(SBSKEY=system).order_by('module_no')
     i=1
     for note in notes:
         if note.subject_code not in codecontext.values():

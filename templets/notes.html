@@ -31,6 +31,7 @@
                 <table class="table table-bordered table-sm table-dark">
                         <thead>
                           <tr>
+                            <h3><span class="badge badge-secondary">subject code:{{subc}}</span></h3>
                             <th scope="col"><h6>module number</h6></th>
                             <th scope="col"><h6>module name</h6></th>
                             <th scope="col"><h6>uploaded by</h6></th>
@@ -42,9 +43,9 @@
                         <tbody>
                           <tr>
                             <th scope="row"><h5>{{ note.module_no }}</h5></th>
-                            <td>{{ note.module_name }}</td>
-                            <td>{{ note.added_by }}</td>
-                            <td><a href="/media/{{note.upload_file}}" class="badge badge-primary">download</a></td>
+                            <td><h6>{{ note.module_name }}</h6></td>
+                            <td><h6>{{ note.added_by }}</h6></td>
+                            <td><a href="/media/{{note.upload_file}}" class="badge badge-pill badge-primary">download</a></td>
                           </tr>
                         </tbody>
                         {%endifequal%} {%endfor%}
