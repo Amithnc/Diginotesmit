@@ -5,7 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>『NOTES』</title>
+    <title>『NOTES-{{scheme}}-{{branch}}-sem{{sem}}』</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Atma:700|Sofadi+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
@@ -18,24 +18,30 @@
                 <a href="/" data-toggle="tooltip" title="go back!">
                     <button type="button" class="btn btn-outline-success">Home</button>
                 </a>
-                <a href="/ "></a>
-                <div class="sidebar-heading">select from below</div>
                 <div class="list-group list-group-flush"> {% for sub,subc in mainlist %}
                     <a class="list-group-item list-group-item-action "></a>
-                    <button class="btn btn-outline-info" ng-click="page='{{ subc }}'">{{ sub }}</button> {%endfor%}</div>
+                    <button class="btn btn-outline-info" ng-click="page='{{ subc }}'">{{ sub }}</button>
+                    {% empty %}
+                    <p class="text-danger" >sorry!! no subjects found :(</p>
+                    <p class="text-secondary">Possible reasons are:</p>
+                    <p class="text-info" >1. You might have selected incorrect scheme,branch or sem</p>
+                    <p class="text-info" >2. Notes for the selected options are still not uploaded</p>
+                    {%endfor%}</div>
             </div>
             <div id="page-content-wrapper">
                 <button class="btn btn-primary" id="menu-toggle">
+                       <form action="/notesview/" method="POST" id="viewform">
+                        {% csrf_token %}
                     <h6>click here to select subject</h6></button> {% for subc in code %}
                 <div ng-show="page === '{{subc}}'">
                 <table class="table table-bordered table-sm table-dark">
                         <thead>
                           <tr>
-                            <h3><span class="badge badge-secondary">subject code:{{subc}}</span></h3>
-                            <th scope="col"><h6>module number</h6></th>
-                            <th scope="col"><h6>module name</h6></th>
-                            <th scope="col"><h6>uploaded by</h6></th>
-                            <th scope="col"><h6>notes</h6></th>
+                            <h3>.<span class="badge badge-secondary">subject code:{{subc}}</span></h3>
+                            <th scope="col"><h6><strong>module number</strong></h6></th>
+                            <th scope="col"><h6><strong>module name</strong></h6></th>
+                            <th scope="col"><h6><strong>uploaded by</strong></h6></th>
+                            <th scope="col"><h6><strong>notes</strong></h6></th>
                           </tr>
                         </thead>
                         {% for note in notes.all %}
@@ -45,12 +51,15 @@
                             <th scope="row"><h5>{{ note.module_no }}</h5></th>
                             <td><h6>{{ note.module_name }}</h6></td>
                             <td><h6>{{ note.added_by }}</h6></td>
-                            <td><a href="/media/{{note.upload_file}}" class="badge badge-pill badge-primary">download</a></td>
+                            <td><p><button type="submit" value="/media/{{note.upload_file}}" name="viewnotes"  form="viewform" class="badge badge-pill badge-success">read</button> | <a href="/media/{{note.upload_file}}" class="badge badge-pill badge-primary">download</a></p></td>
+                          <!--  <td><a href="/media/{{note.upload_file}}" class="badge badge-pill badge-primary">download</a></td> -->
+                            <!-- <td><a href="{{ note.external_link }}"class="badge badge-pill badge-success">learn</a></td> -->
                           </tr>
                         </tbody>
-                        {%endifequal%} {%endfor%}
+                        {%endifequal%}
+                        {%endfor%}
                       </table>
-                    </div> {%endfor%}</div>
+                    </div> {%endfor%}</div></form>
         </div>
     </div>
     <script src="{% static 'js2/jquery.min.js' %}"></script>

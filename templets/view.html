@@ -1,0 +1,15 @@
+<!DOCTYPE html>{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+</head>
+<body style="background-color: #f5f8fd;">
+    <p class="text-center text-info">Please click below to go back to home page or reload, and reload,if you are not abel to view the pdf</p>
+    <p class="text-center" ><a href="/" data-toggle="tooltip" title="go back!">
+        <button type="button" class="btn btn-outline-warning">home</button>
+    </a></p>
+    <iframe src="https://docs.google.com/gview?url=http://amithnc.pythonanywhere.com{{url}}&embedded=true" style="width: 90%; height: 1000px">
+
+    <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

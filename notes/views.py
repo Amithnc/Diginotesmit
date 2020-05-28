@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from .models import Note
-
 def homepage(request):
     return render(request,'home.html')
 def notes(request):
@@ -31,6 +30,14 @@ def notes(request):
     context['scheme']=scheme
     context['branch']=branch
     return render(request,'notes.html',context)
+
+
+def viewnotes(request):
+    context={ }
+    system=request.POST.get('viewnotes',None)
+    url=system
+    context['url']=url
+    return render(request,'view.html',context)
 
 def handler404(request,exception):
     return render(request, '404.html', locals())
