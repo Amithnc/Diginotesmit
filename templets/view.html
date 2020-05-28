@@ -4,11 +4,14 @@
     <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
 </head>
 <body style="background-color: #f5f8fd;">
-    <p class="text-center text-info">Please click below to go back to home page or reload, and reload,if you are not abel to view the pdf</p>
+    <h5><p class="text-center text-info">Not abel to view?? -->Please click below and go back to home page or reload</p></h5>
     <p class="text-center" ><a href="/" data-toggle="tooltip" title="go back!">
         <button type="button" class="btn btn-outline-warning">home</button>
     </a></p>
-    <iframe src="https://docs.google.com/gview?url=http://amithnc.pythonanywhere.com{{url}}&embedded=true" style="width: 90%; height: 1000px">
+     <div>
+        <iframe id='iframe2' src="https://docs.google.com/gview?url=http://amithnc.pythonanywhere.com{{url}}&embedded=true" frameborder="0" style="overflow: hidden; height: 100%;
+            width: 100%; position: absolute;"></iframe>
+    </div>
 
     <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>
 </body>

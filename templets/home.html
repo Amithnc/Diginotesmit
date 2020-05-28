@@ -8,11 +8,79 @@
     <title>『MIT NOTES』</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css1/style.css' %}">
+    <script>
+      function validateForm() {
+          var scheme= document.contactForm.scheme.value;
+          var branch= document.contactForm.branch.value;
+          var sem= document.contactForm.sem.value;
+          sem=sem.toString(); 
+          flag=0;
+          var schemeErr=branchErr=semErr=styear= true;
+          if(scheme != "") {
+              schemeErr = false;
+          }
+          if(branch != "") {
+              branchErr = false;
+          }
+          if(sem!="") {
+              semErr = false;
+          }
+          if(branch=="1styear"){
+                  if((sem !="P-cycle")&&(sem !="C-cycle")){
+                    flag=1;
+                    alertify.alert('❌oh!! hello genius ',"you can't choose semester "+sem+" being 1st year, either select P-cycle or C-cycle", function(){ alertify.error('plz provide correct sem'); });  
+                    // alert("you can't choose semester "+sem+" being 1st year, either select P-cycle or C-cycle");
+                  }
+                  else{
+                      styear=false;}
+          }
+          else{
+              if((sem =="P-cycle")||(sem =="C-cycle")){
+                      alertify.alert('❌oh!! hello genius ',"you can't choose "+ sem +" being in "+branch+"  department", function(){ alertify.error('plz provide correct sem'); });
+                      // alert("you can't choose "+ sem +" being in "+branch+"  department");
+                      flag=1;
+                  }
+                  else{
+                      styear=false;}
+          }
+          mainerror="";
+          num=0;
+          if((schemeErr ||branchErr||semErr||styear)== true) {
+            if(schemeErr==true){
+              mainerror="  'scheme' ";
+              num=1;
+            }
+            if(branchErr==true){
+              mainerror=mainerror+" 'branch' ";
+              num+=1;
+            }
+            if(semErr==true){
+              mainerror=mainerror+" 'sem' ";
+              num+=1;
+            }
+            if(flag!=1){
+              
+                alertify.alert('❌oh!! so lazy to choose the options??', "you have left  "+num+" field empty . please provide proper option for:"+mainerror, function(){ alertify.error('plz provide proper options'); });
+            //  alert("you have left  "+num+" field empty . please provide proper option for:"+mainerror);
+            }
+            message="";
+             mainerror=" ";
+             num=0;
+             return false;
+          } 
+          else {                    
+                scheme=scheme.toString();
+                output=scheme.concat(branch,sem);
+                document.getElementById("sub").value =output;
+          }
+      };
+      </script>
 </head>
 <section id="intro" class="clearfix">
     <div class="text-center">
@@ -30,56 +98,51 @@
 </section>
 <main id="main">
     <section id="branch" class="section-bg">
-               <header><h4>select your scheme branch year</h4></header>
+               <header><h4>select Your scheme Branch Year</h4></header>
                 <div class="col-lg-12">
                     <ul id="branch-flters">
-                      <form action="/notes/" method="POST" id="notesform">
-                        {% csrf_token %}      
+                      <form name="contactForm" onsubmit="return validateForm()" action="/notes/" method="post">
+                        {% csrf_token %} 
                             <p> 
                                 <span class="custom-dropdown ">
-                                <select id="scheme">
+                                <select id="scheme" name="scheme" >
                                    <option value="" disabled selected>Scheme</option>
                                     <option value="2017">2017</option> 
-                                    <option value="2018">2018</option> 
+                                    <option value="2018">2018</option>  
                                 </select>
-                              </span> 
+                           
+                              </span>
                                 <span class="custom-dropdown "> 
-                                <select id="brch"> 
+                                <select id="brch" name="branch" > 
                                   <option value="" disabled selected>Branch</option>
                                     <option value="cs/IS">CS/IS</option> 
-                                    <option value="EC">EC</option> 
-                                    <option value="MECH">MECH</option>      
+                                    <option value="EC">EC</option>
+                                    <option value="civil">civil</option>  
+                                    <option value="mech">MECH</option>
+                                    <option value="1styear">1styear</option>       
                                 </select>
                               </span>
                                 <span class="custom-dropdown ">
-                                  <select id="sem"> 
+                                  <select id="sem" name="sem"> 
                                     <option value="" disabled selected>sem</option>
                                     <option value="3">3</option> 
                                     <option value="4">4</option> 
-                                    <option value="5">5</option> 
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="P-cycle">P-cycle</option>
+                                    <option value="C-cycle">C-cycle</option>    
                                 </select>
                               </span>
                             </p> 
-                            <button onclick="getOption()" id="sub" type="submit" value=" " name="notes"  form="notesform" class="btn btn-success">search🔎</button>   
+                            <button type="submit" id="sub" value="" name="notes" class="btn btn-success">search🔎</button>
+                        </div>
+                    </form>
                     </ul>
                 </div>
     </section>
     <footer>
         <h6>ncᴬ<strong> | {% now "jS F Y H:i" %} |  Designed by MIT ERP TEAM</strong></h6>
        </footer>
-    <script type="text/javascript"> 
-      function getOption() { 
-          scheme=document.querySelector('#scheme');
-          branch=document.querySelector('#brch');
-          semester=document.querySelector('#sem');
-          sem=semester.value;
-          s=sem.toString();  
-          brc=branch.value;                    
-          sch= scheme.value;
-          sch=sch.toString();
-          output=sch.concat(brc,s);
-          document.getElementById("sub").value =output;
-      } 
   </script>
     <a href="#" class="back-to-top"><img src="/media/images/arrow-up-on-a-black-circle-background.png" class="img-fluid" alt="img04"></a>
     <script src="{% static 'js2/jquery.min.js' %}"></script>
