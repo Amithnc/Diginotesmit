@@ -1,15 +1,32 @@
-<!DOCTYPE html>{% load staticfiles %}
+<!DOCTYPE html>{% load static %}
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>『download/view-notes』</title>
     <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap" rel="stylesheet">  
 </head>
+<style>
+     h4,h2{
+        font-family: serif;
+        color: #070d4e;
+    }
+
+</style>
 <body style="background-color: #f5f8fd;">
-    <h5><p class="text-center text-info">Not abel to view?? -->Please click below and go back to home page or reload</p></h5>
-    <p class="text-center" ><a href="/" data-toggle="tooltip" title="go back!">
-        <button type="button" class="btn btn-outline-warning">home</button>
+    <h4><p class="text-center">want your notes offline? click on the downlod button</p></h4>
+    <p class="text-center" ><a href="{{url}}" data-toggle="tooltip" title="download notes!">
+        <button type="button" class="badge badge-pill badge-success">📥download</button>
     </a></p>
+    <h2><p class="text-center text-info">or</p></h2>
+    <h4><p class="text-center ">read online👇🏻</p></h4>
+    <!-- <p class="text-center text-info">Not abel to view?? Please reload the page or click below and go back to home page</p>
+    <p class="text-center" ><a href="/" data-toggle="tooltip" title="go back!">
+        <button type="button" class="badge badge-info">home</button>
+    </a></p> -->
      <div>
-        <iframe id='iframe2' src="https://docs.google.com/gview?url=http://amithnc.pythonanywhere.com{{url}}&embedded=true" frameborder="0" style="overflow: hidden; height: 100%;
+        <iframe id='iframe2' src="https://docs.google.com/gview?url={{url}}&embedded=true" frameborder="0" style="overflow: hidden; height: 100%;
             width: 100%; position: absolute;"></iframe>
     </div>
 

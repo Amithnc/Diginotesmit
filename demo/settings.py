@@ -9,7 +9,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os
+import os,sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,6 +25,8 @@ SECRET_KEY = '*yb7at9#!y)*g52k34s(0w4%3h+b9qt8-(pkqgp^nhgl8_!nvv'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE ='.........file name.json'
+
 
 
 # Application definition
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gdstorage'
 ]
 
 MIDDLEWARE = [

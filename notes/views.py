@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .models import Note
+
+from gdstorage.storage import GoogleDriveStorage
+gd_storage = GoogleDriveStorage()
 def homepage(request):
     return render(request,'home.html')
 def notes(request):
@@ -31,13 +34,14 @@ def notes(request):
     context['branch']=branch
     return render(request,'notes.html',context)
 
-
 def viewnotes(request):
     context={ }
     system=request.POST.get('viewnotes',None)
-    url=system
-    context['url']=url
+    path=gd_storage.url(system)
+    context['url']=path
     return render(request,'view.html',context)
 
 def handler404(request,exception):
     return render(request, '404.html', locals())
+
+

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head> {% load staticfiles %}
+<head> {% load static %}
     <meta charset="utf-8">
     <link rel="icon" href="http://amithnc.pythonanywhere.com/media/images/logo.png" type="image/x-icon">
     <title>『MIT NOTES』</title>
@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="{% static 'css1/style.css' %}">
     <script>
       function validateForm() {
-          var scheme= document.contactForm.scheme.value;
-          var branch= document.contactForm.branch.value;
-          var sem= document.contactForm.sem.value;
+          var scheme= document.notesForm.scheme.value;
+          var branch= document.notesForm.branch.value;
+          var sem= document.notesForm.sem.value;
           sem=sem.toString(); 
           flag=0;
           var schemeErr=branchErr=semErr=styear= true;
@@ -31,6 +31,7 @@
           if(sem!="") {
               semErr = false;
           }
+          if((branch!="")&&(sem!="")){
           if(branch=="1styear"){
                   if((sem !="P-cycle")&&(sem !="C-cycle")){
                     flag=1;
@@ -48,7 +49,7 @@
                   }
                   else{
                       styear=false;}
-          }
+          }}
           mainerror="";
           num=0;
           if((schemeErr ||branchErr||semErr||styear)== true) {
@@ -101,7 +102,7 @@
                <header><h4>select Your scheme Branch Year</h4></header>
                 <div class="col-lg-12">
                     <ul id="branch-flters">
-                      <form name="contactForm" onsubmit="return validateForm()" action="/notes/" method="post">
+                      <form name="notesForm" onsubmit="return validateForm()" action="/notes/" method="post">
                         {% csrf_token %} 
                             <p> 
                                 <span class="custom-dropdown ">

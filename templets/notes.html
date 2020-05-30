@@ -1,4 +1,4 @@
-<!DOCTYPE html> {% load staticfiles %}
+<!DOCTYPE html> {% load static %}
 <html lang="en">
 
 <head>
@@ -30,8 +30,6 @@
             </div>
             <div id="page-content-wrapper">
                 <button class="btn btn-primary" id="menu-toggle">
-                       <form action="/notesview/" method="POST" id="viewform">
-                        {% csrf_token %}
                     <h6>click here to select subject</h6></button> {% for subc in code %}
                 <div ng-show="page === '{{subc}}'">
                 <table class="table table-bordered table-sm table-dark">
@@ -44,6 +42,8 @@
                             <th scope="col"><h6><strong>notes</strong></h6></th>
                           </tr>
                         </thead>
+                        <form action="/notesview/" method="POST" id="viewform">
+                        {% csrf_token %}   
                         {% for note in notes.all %}
                         {% ifequal subc note.subject_code %}
                         <tbody>
@@ -51,15 +51,18 @@
                             <th scope="row"><h5>{{ note.module_no }}</h5></th>
                             <td><h6>{{ note.module_name }}</h6></td>
                             <td><h6>{{ note.added_by }}</h6></td>
-                            <td><p><button type="submit" value="/media/{{note.upload_file}}" name="viewnotes"  form="viewform" class="badge badge-pill badge-success">read</button> | <a href="/media/{{note.upload_file}}" class="badge badge-pill badge-primary">download</a></p></td>
-                          <!--  <td><a href="/media/{{note.upload_file}}" class="badge badge-pill badge-primary">download</a></td> -->
+                            
+                            <td>
+                              <p>
+                                <button type="submit" value="{{note.notes_file}}" name="viewnotes"  form="viewform" class="badge badge-pill badge-info">view</button>
+                            </td>
                             <!-- <td><a href="{{ note.external_link }}"class="badge badge-pill badge-success">learn</a></td> -->
                           </tr>
                         </tbody>
                         {%endifequal%}
                         {%endfor%}
                       </table>
-                    </div> {%endfor%}</div></form>
+                    </div> {%endfor%}</div>
         </div>
     </div>
     <script src="{% static 'js2/jquery.min.js' %}"></script>
