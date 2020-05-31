@@ -42,7 +42,7 @@
                             <th scope="col"><h6><strong>notes</strong></h6></th>
                           </tr>
                         </thead>
-                        <form action="/notesview/" method="POST" id="viewform">
+                        <form action="/notesview/" method="POST" id="viewform" onsubmit="display()" >
                         {% csrf_token %}   
                         {% for note in notes.all %}
                         {% ifequal subc note.subject_code %}
@@ -54,7 +54,7 @@
                             
                             <td>
                               <p>
-                                <button type="submit" value="{{note.notes_file}}" name="viewnotes"  form="viewform" class="badge badge-pill badge-info">view</button>
+                                <button type="submit" value="{{note.notes_file}}" name="viewnotes"  form="viewform" class="badge badge-pill badge-primary">view</button>
                             </td>
                             <!-- <td><a href="{{ note.external_link }}"class="badge badge-pill badge-success">learn</a></td> -->
                           </tr>

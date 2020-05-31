@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import Note
-
 from gdstorage.storage import GoogleDriveStorage
 gd_storage = GoogleDriveStorage()
 def homepage(request):
+  #  a,b=gd_storage.listdir("google drive folder-(API)")       
+  #  print(a,b)#gives o/p a=list of directries and b=list of files 
     return render(request,'home.html')
 def notes(request):
     context ={ }
@@ -22,7 +23,7 @@ def notes(request):
                 sem=note.sem
                 scheme=note.scheme
                 branch=note.branch
-                i=i+1
+                i=i+1           
     s=list(context.values())
     subcode=list(codecontext.values())
     context['code']=subcode
@@ -33,13 +34,13 @@ def notes(request):
     context['scheme']=scheme
     context['branch']=branch
     return render(request,'notes.html',context)
-
+   
 def viewnotes(request):
     context={ }
     system=request.POST.get('viewnotes',None)
     path=gd_storage.url(system)
     context['url']=path
-    return render(request,'view.html',context)
+    return render(request,'view.html',context) 
 
 def handler404(request,exception):
     return render(request, '404.html', locals())

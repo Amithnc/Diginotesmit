@@ -7,13 +7,6 @@
     <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap" rel="stylesheet">  
 </head>
-<style>
-     h4,h2{
-        font-family: serif;
-        color: #070d4e;
-    }
-
-</style>
 <body style="background-color: #f5f8fd;">
     <h4><p class="text-center">want your notes offline? click on the downlod button</p></h4>
     <p class="text-center" ><a href="{{url}}" data-toggle="tooltip" title="download notes!">
@@ -21,6 +14,9 @@
     </a></p>
     <h2><p class="text-center text-info">or</p></h2>
     <h4><p class="text-center ">read online👇🏻</p></h4>
+    <div class="alert alert-info" role="alert">
+        <strong>'🛈INFO</strong>  sometimes online view feature may not work. Please consider reloading if needed<button class="badge badge-pill badge-info" onclick="location.reload();">Reload</button>
+    </div>
     <!-- <p class="text-center text-info">Not abel to view?? Please reload the page or click below and go back to home page</p>
     <p class="text-center" ><a href="/" data-toggle="tooltip" title="go back!">
         <button type="button" class="badge badge-info">home</button>
@@ -31,5 +27,12 @@
     </div>
 
     <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>
+    <style>
+        h4,h2{
+           font-family: serif;
+           color: #070d4e;
+       }
+   
+   </style>
 </body>
 </html>
